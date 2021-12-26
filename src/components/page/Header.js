@@ -1,6 +1,7 @@
 import { Button } from "react-bootstrap"
 import { Link } from "react-router-dom"
 const Header = (props) => {
+    console.log(props)
     return(
         <header className="w-100 d-flex">
             <div id="title-header" className="w-25">
@@ -12,6 +13,7 @@ const Header = (props) => {
                     Time: {props.timer.getTimeValues().toString()}
                 </span>
             </div>
+           
             <ul className="w-50">
                 <li>
                     <Link to="/">
@@ -28,4 +30,5 @@ const Header = (props) => {
         </header>
     )
 }
+
 export default Header

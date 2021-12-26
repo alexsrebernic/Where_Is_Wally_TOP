@@ -7,9 +7,10 @@ import useTimer from 'easytimer-react-hook';
 
 import { useState } from "react";
 function App() {
-  let [backgroundImg,setBackgroundImage] = useState("1")
+  let [backgroundImg,setBackgroundImage] = useState("0")
   let [clickStartButton,setClickStartButton] = useState(false)
   const [timer, isTargetAchieved] = useTimer();
+  const [IsFounded,setIsFounded] = useState(false)
   const setButton = () => {
     setClickStartButton(true)
   }
@@ -25,9 +26,9 @@ function App() {
     <HashRouter>
       <Header timer={timer}  unsetButton={unsetButton} />
       <Routes>
-        <Route path="/" element={<Home setClickStartButton={setButton} setBackgroundImage={setBackgroundImage}/>} />
+        <Route path="/" element={<Home setClickStartButton={setButton} num={backgroundImg} setBackgroundImage={setBackgroundImage}/>} />
         <Route path="/ranking" element={<Ranking/>} />
-        <Route path='/game' element={<Game timer={timer}  unsetButton={unsetButton}  clickStartButton={clickStartButton}   num={backgroundImg}/>}  />
+        <Route path='/game' element={<Game timer={timer}    unsetButton={unsetButton}  clickStartButton={clickStartButton}   num={backgroundImg}/>}  />
         
       </Routes>
     </HashRouter>

@@ -4,6 +4,7 @@
     box-sizing: border-box;
 }
 header {
+    z-index: 2;
     background-color: white;
     position: fixed;
     top: 0%;
@@ -180,6 +181,8 @@ header {
   background-size: cover;
 }
 .count-down {
+    pointer-events: none;
+    z-index: 10;
     display: flex;
     justify-content: center;
     height: 100%;
@@ -189,5 +192,47 @@ header {
         font-size: 300px;
         margin-top: 200px;
         color: white;
+    }
+}
+.dissable-button {
+    pointer-events: none
+}
+#success {
+    color: green;
+    svg {
+        width: 20px;
+    }
+}
+#not-here {
+    color: red;
+    svg {
+        width: 20px;
+    }
+}
+#popUpRanking {
+    z-index: 0;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 30px;
+    height: 20em;
+    width: 20em;
+    position: absolute;
+    background-image: none;
+    background-color: white;
+    border: 1px solid black;
+    transform: translate(0px,-200px);
+    box-shadow: 0px 1px 15px 0px rgba(0,0,0,0.75);
+-webkit-box-shadow: 0px 1px 15px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 1px 15px 0px rgba(0,0,0,0.75);
+    span {
+        font-size: 14px;
+        text-align: center;
+        width: 80%;
+    }
+    button {
+        margin-top: 30px;
     }
 }

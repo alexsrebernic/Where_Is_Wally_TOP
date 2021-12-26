@@ -6,6 +6,7 @@
 }
 
 header {
+  z-index: 2;
   background-color: white;
   position: fixed;
   top: 0%;
@@ -232,6 +233,8 @@ header li {
 }
 
 .count-down {
+  pointer-events: none;
+  z-index: 10;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -247,5 +250,65 @@ header li {
   font-size: 300px;
   margin-top: 200px;
   color: white;
+}
+
+.dissable-button {
+  pointer-events: none;
+}
+
+#success {
+  color: green;
+}
+
+#success svg {
+  width: 20px;
+}
+
+#not-here {
+  color: red;
+}
+
+#not-here svg {
+  width: 20px;
+}
+
+#popUpRanking {
+  z-index: 0;
+  border-radius: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 30px;
+  height: 20em;
+  width: 20em;
+  position: absolute;
+  background-image: none;
+  background-color: white;
+  border: 1px solid black;
+  -webkit-transform: translate(0px, -200px);
+          transform: translate(0px, -200px);
+  box-shadow: 0px 1px 15px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0px 1px 15px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 1px 15px 0px rgba(0, 0, 0, 0.75);
+}
+
+#popUpRanking span {
+  font-size: 14px;
+  text-align: center;
+  width: 80%;
+}
+
+#popUpRanking button {
+  margin-top: 30px;
 }
 /*# sourceMappingURL=main.css.map */
