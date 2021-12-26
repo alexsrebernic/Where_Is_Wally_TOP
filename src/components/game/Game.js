@@ -8,9 +8,14 @@ import { useEffect, useState } from 'react'
 const app = initializeApp(firebaseConfig);
 const db = getFirestore();
 const docRef = doc(db, "cities", "SF");
-const docSnap = await getDoc(docRef);
-
+try {
+    const docSnap = await getDoc(docRef);
+  } catch (e){
+    console.log(e)
+  }
 const handleCoordinatesClick =  (event) => {
+  
+    
    
     let coordinate30Left = event.clientX - 30
     let coordinate30Rigth = event.clientX + 30
