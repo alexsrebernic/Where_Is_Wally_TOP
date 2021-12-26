@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import Home from "./components/page/Home";
+import Header from "./components/page/Header";
+import Ranking from "./components/page/Ranking";
+import Game from "./components/game/Game";
+import {HashRouter,Route,Routes} from 'react-router-dom'
 
+import { useState } from "react";
 function App() {
+  let [backgroundImg,setBackgroundImage] = useState("1")
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <HashRouter>
+      <Header/>
+      <Routes>
+        <Route path="/" element={<Home setBackgroundImage={setBackgroundImage}/>} />
+        <Route path="/ranking" element={<Ranking/>} />
+        <Route path='/game'  element={<Game num={backgroundImg}/>}  />
+        
+      </Routes>
+    </HashRouter>
     </div>
   );
 }
