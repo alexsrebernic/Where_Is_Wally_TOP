@@ -4,6 +4,9 @@
     box-sizing: border-box;
 }
 header {
+    background-color: white;
+    position: fixed;
+    top: 0%;
     border-bottom: 1px solid black;
     #logo {
         width: 75px;
@@ -30,6 +33,7 @@ header {
     }
 }
 #container-home {
+    margin-top: 77px;
     position: relative; 
     display: flex;
     justify-content: center;
@@ -91,7 +95,8 @@ header {
     left: 0px;
     opacity: 0.2;
 
-}.hard-level::before {
+}
+.hard-level::before {
     background-image: url('/home/alexsrebernic/Alex/Programacion/Projects/projectOdinJsPath/where-is-wally-top/src/components/img/23d4855c01fd62ee06dfff509e12667e.jpg');
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -124,5 +129,65 @@ header {
     }
     tr {
         border-top: 1px solid #dee2e6;
+    }
+}
+#gameContainer {
+    margin-top: 77px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 120vh;
+    width: 95%;
+    margin-left: 50px;
+   
+}
+#game {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 80px;
+}
+.hard-level-map {
+    height: 100%;
+    width: 100%;
+    background-image: url('/home/alexsrebernic/Alex/Programacion/Projects/projectOdinJsPath/where-is-wally-top/src/components/img/23d4855c01fd62ee06dfff509e12667e.jpg');
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+  background-size: cover;
+  
+
+}
+.medium-level-map {
+    height: 100%;
+    width: 100%;
+
+    background-image: url('/home/alexsrebernic/Alex/Programacion/Projects/projectOdinJsPath/where-is-wally-top/src/components/img/WheresWallyAtWembley_6.jpg');
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+  background-size: cover;
+   
+}
+.easy-level-map{
+    height: 100%;
+    width: 100%;
+    background-image: url('/home/alexsrebernic/Alex/Programacion/Projects/projectOdinJsPath/where-is-wally-top/src/components/img/04f4c1fdc7eb4b71de3e90caebc882dc.jpg');
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+  background-size: cover;
+}
+.count-down {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.75);
+    h1 {
+        font-size: 300px;
+        margin-top: 200px;
+        color: white;
     }
 }
