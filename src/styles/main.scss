@@ -113,6 +113,7 @@ header {
 
 }
 #ranking {
+    background-color: red;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -137,7 +138,7 @@ header {
 
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     height: 120vh;
     width: 95%;
     margin-left: 50px;
@@ -210,7 +211,7 @@ header {
     }
 }
 #popUpRanking {
-    z-index: 0;
+    z-index: 2;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -235,4 +236,13 @@ header {
     button {
         margin-top: 30px;
     }
+}
+#container-ranking {
+    z-index: 1;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    height: 120vh;
+    width: 99%;
 }

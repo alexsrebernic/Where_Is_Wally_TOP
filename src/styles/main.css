@@ -153,6 +153,7 @@ header li {
 }
 
 #ranking {
+  background-color: red;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -190,9 +191,9 @@ header li {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   height: 120vh;
   width: 95%;
   margin-left: 50px;
@@ -273,7 +274,7 @@ header li {
 }
 
 #popUpRanking {
-  z-index: 0;
+  z-index: 2;
   border-radius: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -310,5 +311,19 @@ header li {
 
 #popUpRanking button {
   margin-top: 30px;
+}
+
+#container-ranking {
+  z-index: 1;
+  display: none;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  height: 120vh;
+  width: 99%;
 }
 /*# sourceMappingURL=main.css.map */

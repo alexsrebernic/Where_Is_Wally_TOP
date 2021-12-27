@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 
 const Home = (props) => {
         useEffect(() => {
-            console.log(props)
             if(props.num === '0'){
                 document.getElementById("link-to-game").setAttribute("class","dissable-button")
             } else if(props.num !== '0'){

@@ -1,7 +1,6 @@
 import { Button } from "react-bootstrap"
 import { Link } from "react-router-dom"
 const Header = (props) => {
-    console.log(props)
     return(
         <header className="w-100 d-flex">
             <div id="title-header" className="w-25">
