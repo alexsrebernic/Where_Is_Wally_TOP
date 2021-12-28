@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Where_Is_Wally_TOP/static/css/main.554feda0.css",
+    "main.js": "/Where_Is_Wally_TOP/static/js/main.b46cc7cc.js",
+    "static/media/jpg": "/Where_Is_Wally_TOP/static/media/04f4c1fdc7eb4b71de3e90caebc882dc.07340f9e034ed7d5c159.jpg",
+    "static/media/WheresWallyAtWembley_6.jpg": "/Where_Is_Wally_TOP/static/media/WheresWallyAtWembley_6.f4345d23a80021b6d5c4.jpg",
+    "index.html": "/Where_Is_Wally_TOP/index.html",
+    "main.554feda0.css.map": "/Where_Is_Wally_TOP/static/css/main.554feda0.css.map",
+    "main.b46cc7cc.js.map": "/Where_Is_Wally_TOP/static/js/main.b46cc7cc.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.554feda0.css",
+    "static/js/main.b46cc7cc.js"
+  ]
+}
