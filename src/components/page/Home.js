@@ -2,6 +2,9 @@ import { useEffect } from 'react'
 import {Button} from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
+
+
+
 const Home = (props) => {
         useEffect(() => {
             if(props.num === '0'){

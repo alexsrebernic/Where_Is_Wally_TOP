@@ -1,26 +1,17 @@
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
+
+import { updateDoc } from "firebase/firestore";
+import { useEffect, useState } from 'react'
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import firebaseConfig from "../firebase-config";
-import { doc, getDoc , setDoc } from "firebase/firestore";
-import { useEffect, useState } from 'react'
-import uniqid from 'uniqid'
+import { doc, getDoc  } from "firebase/firestore";
 const app = initializeApp(firebaseConfig);
 const db = getFirestore();
-let arrayOfLevels
-const docRef = doc(db, "coordsWally", "levels");
-(async() => {
-    const docSnap = await getDoc(docRef);
-    if (docSnap.exists()) { 
 
-        return docSnap.data()
-    } else {
-        console.log("No such document!");
-      }
-})().then(a => {arrayOfLevels = a})
-
-
+const coordsRef = doc(db, "coordsWally", "levels");
+const rankingRef = doc(db, "ranking", "array");
 
 const Game = (props) => {
     let [countDown,setCountDown] = useState(3)
@@ -54,84 +45,98 @@ const Game = (props) => {
         setCountDown(3)
     }
   },[countDown,props])
+  
   const handleCoordinatesClick =  (event) => {
-    let seconds = props.timer.getTotalTimeValues()
-    console.log(seconds)
-      let containerRanking = document.getElementById("container-ranking")
+    
+    let containerRanking = document.getElementById("container-ranking")
     let coordinate30Left = event.clientX - 35
     let coordinate30Rigth = event.clientX + 35
     let coordinate30Top = event.clientY - 35
-    let coordinate30Down = event.clientY + 35
+    let coordinate30Down = event.clientY + 35;
+
+
+    (async() => {
+    const docSnap = await getDoc(coordsRef);
+    if (docSnap.exists()) { 
+        console.log("Doc Found")
+        return docSnap.data()
+    } else {
+        console.log("No such document!");
+      }
+    })().then(data => {
     if(props.num === "1"){
-        if(coordinate30Left < arrayOfLevels.level1[0] &&
-           coordinate30Rigth > arrayOfLevels.level1[0] &&
-            coordinate30Top < arrayOfLevels.level1[1] &&
-            coordinate30Down > arrayOfLevels.level1[1]){
+        if(coordinate30Left < data.level1[0] &&
+           coordinate30Rigth > data.level1[0] &&
+            coordinate30Top < data.level1[1] &&
+            coordinate30Down > data.level1[1]){
                 props.timer.pause()
                 containerRanking.style.display ="flex"
-            } else {
-                console.log("Missed")
-            }
+            } 
     } else if(props.num === "2"){
-        if(coordinate30Left < arrayOfLevels.level2[0] &&
-            coordinate30Rigth > arrayOfLevels.level2[0] &&
-             coordinate30Top < arrayOfLevels.level2[1] &&
-             coordinate30Down > arrayOfLevels.level2[1]){
-                console.log("You did it!")
+        if(coordinate30Left < data.level2[0] &&
+            coordinate30Rigth > data.level2[0] &&
+             coordinate30Top < data.level2[1] &&
+             coordinate30Down > data.level2[1]){
                 props.timer.pause()
                 containerRanking.style.display ="flex"
-             } else {
-                 console.log("Missed")
              }
     } else if(props.num === "3"){
-        if(coordinate30Left < arrayOfLevels.level3[0] &&
-            coordinate30Rigth > arrayOfLevels.level3[0] &&
-             coordinate30Top < arrayOfLevels.level3[1] &&
-             coordinate30Down > arrayOfLevels.level3[1]){
+        if(coordinate30Left < data.level3[0] &&
+            coordinate30Rigth > data.level3[0] &&
+             coordinate30Top < data.level3[1] &&
+             coordinate30Down > data.level3[1]){
                 props.timer.pause()
                 containerRanking.style.display ="flex"
 
-            } else {
-
-                 console.log("Missed")
-             }
+            } 
     }
+})
     
+
 }   
     const handleInputName = (e) => {
         setInputName(e.target.value)
     }
     const submitScore = (event) => {
-        console.log("asd")
-        event.preventDefault()
         if(inputName === "") return
-        if(props.num === "1"){
-            (async() => {
-                await setDoc(doc(db, "ranking", "level1"), {
-                    name: inputName,
-                    score: score,
-                    time: props.timer.getTotalTimeValues().toString()
-                  });
-            })()
-           
-        } else if(props.num === "2"){
-            (async() => {
-                await setDoc(doc(db, "ranking", "level2"), {
-                    name: inputName,
-                    score: score,
-                    time: props.timer.getTotalTimeValues().toString()
-                  });
-            })()
-        } else if(props.num ==="3"){
-            (async() => {
-                await setDoc(doc(db, "ranking", "level3"), {
-                    name: inputName,
-                    score: score,
-                    time: props.timer.getTotalTimeValues().toString()
-                  });
-            })()
+        let userRanking = {name:inputName,score:score,time:props.timer.getTotalTimeValues().toString()};
+
+        (async() => {
+    const docSnap = await getDoc(rankingRef);
+    
+        if (docSnap.exists()) { 
+
+        return docSnap.data()
+         } else {
+        console.log("No such document!");
         }
-       
+        })().then(async data => {  
+
+            if(props.num === "1"){
+                (async() => {
+                await updateDoc(rankingRef, { 
+                    arraylevel1:  data.arraylevel1.concat(userRanking),
+                });
+                
+               })()
+            } else if(props.num === "2"){
+                (async() => {
+                    await updateDoc(rankingRef, { 
+                        arraylevel2:  data.arraylevel2.concat(userRanking),
+                    });
+                    
+                   })()
+            } else if(props.num ==="3"){
+                (async() => {
+                    await updateDoc(rankingRef, { 
+                        arraylevel3: data.arraylevel3.concat(userRanking),
+                    });
+                    
+                   })()
+            }
+        })       
+    props.timer.reset()  
+    props.timer.pause()
     } 
     useEffect(() => {
         let seconds = props.timer.getTotalTimeValues().seconds
@@ -149,6 +154,10 @@ const Game = (props) => {
                 <input onChange={handleInputName} type="text" maxLength="10" placeholder="Name"></input>
                 <Link to="/">
                 <Button onClick={submitScore}>Submit</Button>
+                </Link>
+
+                <Link to="/">
+                    <Button>Back to Home</Button>
                 </Link>
             </div>
         </div>  
