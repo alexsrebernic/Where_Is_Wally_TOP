@@ -70,6 +70,8 @@ const Game = (props) => {
            coordinate30Rigth > data.level1[0] &&
             coordinate30Top < data.level1[1] &&
             coordinate30Down > data.level1[1]){
+                console.log("YOu did it")
+
                 props.timer.pause()
                 containerRanking.style.display ="flex"
             } 
