@@ -2,7 +2,7 @@ import { Table,Tabs,Tab } from "react-bootstrap"
 import { doc, getDoc } from "firebase/firestore";
 import { getFirestore } from "firebase/firestore";
 import { initializeApp } from "firebase/app";
-import firebaseConfig from "../firebase-config";
+import firebaseConfig from "/home/alexsrebernic/Alex/Programacion/Projects/projectOdinJsPath/where-is-wally-top/src/firebase-config.js";
 import { useEffect, useState } from "react";
 const app = initializeApp(firebaseConfig);
 

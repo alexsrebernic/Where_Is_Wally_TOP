@@ -5,8 +5,9 @@ import { updateDoc } from "firebase/firestore";
 import { useEffect, useState } from 'react'
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import firebaseConfig from "../firebase-config";
+
 import { doc, getDoc  } from "firebase/firestore";
+import firebaseConfig from '/home/alexsrebernic/Alex/Programacion/Projects/projectOdinJsPath/where-is-wally-top/src/firebase-config.js'
 const app = initializeApp(firebaseConfig);
 const db = getFirestore();
 
